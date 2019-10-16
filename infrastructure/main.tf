@@ -46,9 +46,7 @@ module "frontend" {
   location                        = "${var.location}"
   env                             = "${var.env}"
   ilbIp                           = "${var.ilbIp}"
-  is_frontend                     = "${var.env != "preview" ? 1: 0}"
   subscription                    = "${var.subscription}"
-  additional_host_name            = "${var.env != "preview" ? var.additional_host_name : "null"}"
   https_only                      = "false"
   capacity                        = "${var.capacity}"
   common_tags                     = "${var.common_tags}"
@@ -56,6 +54,7 @@ module "frontend" {
   asp_rg                          = "${local.asp_rg}"
   instance_size                   = "I3"
   appinsights_instrumentation_key = "${var.appinsights_instrumentation_key}"
+  enable_ase = false
 
   app_settings = {
 
